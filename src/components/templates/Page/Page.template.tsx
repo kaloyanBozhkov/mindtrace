@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 
-import { Box, type BoxProps, Center, type ContainerProps, Stack } from '@mantine/core'
+import { Box, type BoxProps, type ContainerProps, Stack } from '@mantine/core'
 
 import Spacing from 'components/templates/Spacing/Spacing'
 

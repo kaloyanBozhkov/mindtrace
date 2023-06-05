@@ -8,8 +8,6 @@ import { VRButton, XR } from '@react-three/xr'
 import { useModal } from 'stores/Modal.store'
 import { useShapes } from 'stores/Shapes.store'
 
-import Rectangle from 'classes/Rectangle'
-
 import SetupShape from 'components/molecules/SetupShape/SetupShape.molecule'
 
 import LoaderMolecule from 'components/three/molecules/Loader/Loader.molecule'

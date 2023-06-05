@@ -12,8 +12,6 @@ import Shape from 'classes/Shape'
 import ActionButton from 'components/atoms/ActionButton/ActionButton.atom'
 import MTextInput from 'components/atoms/TextInput/TextInput.atom'
 
-import styles from './styles.module.scss'
-
 const SetupShape = ({
   shapeNaming,
   onConfirm,
@@ -54,7 +52,7 @@ const SetupShape = ({
     })
 
   return (
-    <Stack className={styles.setupShape}>
+    <Stack spacing="md">
       {Object.entries(initialValues).map((entry) => {
         const [fieldName, val] = entry
         return (

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
-import Loading from 'components/molecules/Loading/Loading.molecule'
-
 import { Html, useProgress } from '@react-three/drei'
+
+import Loading from 'components/molecules/Loading/Loading.molecule'
 
 const LoaderMolecule = () => {
   const { progress } = useProgress(),

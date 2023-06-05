@@ -1,7 +1,8 @@
 import { getAuth } from '@clerk/nextjs/server'
-import { trpcCaller } from 'utils/trpc.helper'
 
 import { type GetServerSideProps } from 'next'
+
+import { trpcCaller } from 'utils/trpc.helper'
 
 /** This page is a special redirect for after Clerk sign up  */
 const SignedUpPage = () => null

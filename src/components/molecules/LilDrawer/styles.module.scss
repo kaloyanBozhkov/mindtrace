@@ -1,40 +1,42 @@
-@import "scss/mixins.scss";
+@import "scss/mixins";
 
 .lilDrawer {
-    min-height: 300px;
-    color: var(--mantine-color-frontSecondary-1);
+  min-height: 300px;
+  color: var(--mantine-color-frontSecondary-1);
 
+  &::after {
+    margin: auto;
+  }
+
+  &[data-shape="circle"],
+  &[data-shape="rectangle"] {
     &::after {
-        margin: auto;
-    }
+      content: "";
+      opacity: 0;
+      border: 2px dashed var(--mantine-color-frontSecondary-1);
+      width: 100px;
+      height: 100px;
 
-    &[data-shape="circle"],
-    &[data-shape="rectangle"] {
-        &::after {
-            content: "";
-            opacity: 0;
-            border: 2px dashed var(--mantine-color-frontSecondary-1);
-            width: 100px;
-            height: 100px;
-            @include animate(opacity-in, 2s);
-        }
+      @include animate(opacity-in, 2s);
     }
-    &[data-shape="none"] {
-        &::after {
-            content: "Lil Preview";
-            opacity: 0.4;
-        }
-    }
+  }
 
-    &[data-shape="rectangle"] {
-        &::after {
-            width: 150px;
-        }
+  &[data-shape="none"] {
+    &::after {
+      content: "Lil Preview";
+      opacity: 0.4;
     }
+  }
 
-    &[data-shape="circle"] {
-        &::after {
-            border-radius: 150%;
-        }
+  &[data-shape="rectangle"] {
+    &::after {
+      width: 150px;
     }
+  }
+
+  &[data-shape="circle"] {
+    &::after {
+      border-radius: 150%;
+    }
+  }
 }

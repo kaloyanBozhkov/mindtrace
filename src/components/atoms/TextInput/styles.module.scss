@@ -42,12 +42,6 @@
     }
   }
 
-  &[data-active="false"] {
-    input {
-      color: transparent;
-    }
-  }
-
   &[data-active="true"] {
     label {
       font-size: 12px;
@@ -55,14 +49,24 @@
       color: var(--mantine-color-frontPrimary-0);
     }
 
-    input {
-      color: inherit;
+    .txtInput {
+      input {
+        color: inherit;
+      }
     }
   }
 
   &[data-invalid="true"] {
     label {
       color: var(--mantine-color-invalid-0);
+    }
+  }
+
+  &[data-active="false"] {
+    .txtInput {
+      input {
+        color: transparent;
+      }
     }
   }
 

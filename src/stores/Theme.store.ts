@@ -1,5 +1,6 @@
-import { type ITheme, defaultTheme } from 'scss/variables'
 import { create } from 'zustand'
+
+import { type ITheme, defaultTheme } from 'scss/variables'
 
 export interface IThemeStore {
   theme: ITheme

@@ -1,9 +1,9 @@
 // specificity on purpose
 div.wrapper {
-    transition: all 1s;
+  transition: all 1s;
 
-    &[data-select-active="true"] {
-        opacity: 0;
-        pointer-events: none;
-    }
+  &[data-select-active="true"] {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
