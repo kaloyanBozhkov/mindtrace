@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react'
 
-import { Box, type BoxProps, Center, type ContainerProps } from '@mantine/core'
+import { Box, type BoxProps, Center, type ContainerProps, Stack } from '@mantine/core'
 
 import Spacing from 'components/templates/Spacing/Spacing'
 
@@ -17,16 +17,16 @@ const Page = ({
   contentProps?: Partial<BoxProps>
   spacingProps?: Partial<ContainerProps>
 }) => (
-  <Spacing sides="left-right" className={styles.page} {...spacingProps}>
+  <Stack className={styles.page} {...spacingProps}>
     {drawer && (
-      <Center className={styles.nav} id="top">
-        <Spacing sides="left-right">{drawer}</Spacing>
-      </Center>
+      <Spacing sides="left-right" className={styles.nav}>
+        {drawer}
+      </Spacing>
     )}
     <Box className={styles.content} {...contentProps}>
       {children}
     </Box>
-  </Spacing>
+  </Stack>
 )
 
 export default Page

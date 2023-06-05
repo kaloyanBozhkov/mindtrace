@@ -1,12 +1,15 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import { config } from '@fortawesome/fontawesome-svg-core'
-import { MantineProvider } from '@mantine/core'
+import { MantineProvider, Modal } from '@mantine/core'
 
 import { type AppType } from 'next/app'
 import Head from 'next/head'
 
+import { useModal } from 'stores/Modal.store'
 import { useTheme } from 'stores/Theme.store'
+
+import useOnLocationChange from 'hooks/location/useOnLocationChange'
 
 import ErrorBoundary from 'components/organisms/ErrorBoundary/ErrorBoundary.organism'
 import Header from 'components/organisms/Header/Header.organism'
@@ -24,7 +27,15 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  const theme = useTheme(({ theme }) => theme)
+  const theme = useTheme(({ theme }) => theme),
+    modalProps = useModal((store) => store.modalProps),
+    closeModal = useModal((s) => s.controls.closeModal)
+
+  useOnLocationChange({
+    onChange: () => {
+      if (modalProps.opened) closeModal()
+    },
+  })
 
   return (
     <>
@@ -48,6 +59,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
                   <Header />
                 </Spacing>
               }
+              modal={<Modal {...modalProps} onClose={closeModal} centered lockScroll />}
             >
               <Component {...pageProps} />
             </MainTemplate>

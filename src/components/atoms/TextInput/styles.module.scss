@@ -2,7 +2,7 @@
 
 // @TODO move to em's if we need different sizes for atom
 .inputWrapper {
-  .ehTxtInput {
+  .txtInput {
     position: relative;
     border-radius: var(--mantine-radius-sm);
     overflow: hidden;
@@ -18,6 +18,7 @@
       position: absolute;
       top: -10px;
       transition: all 150ms;
+      text-transform: capitalize;
     }
 
     input {
@@ -41,11 +42,21 @@
     }
   }
 
+  &[data-active="false"] {
+    input {
+      color: transparent;
+    }
+  }
+
   &[data-active="true"] {
     label {
       font-size: 12px;
       transform: translateY(26px);
       color: var(--mantine-color-frontPrimary-0);
+    }
+
+    input {
+      color: inherit;
     }
   }
 
@@ -56,7 +67,7 @@
   }
 
   &[data-invalid="false"] {
-    .ehTxtInput {
+    .txtInput {
       &::after {
         z-index: 2;
         content: "";
@@ -74,7 +85,7 @@
     }
 
     &[data-active="true"] {
-      .ehTxtInput {
+      .txtInput {
         &::after {
           width: 100%;
           background-color: var(--mantine-color-frontPrimary-0);

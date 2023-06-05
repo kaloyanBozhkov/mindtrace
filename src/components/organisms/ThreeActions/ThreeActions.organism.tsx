@@ -10,18 +10,20 @@ import LilDrawer from 'components/molecules/LilDrawer/LilDrawer.molecule'
 import LilBox from 'components/templates/LilBox/LilBox.template'
 import SlideInChildren from 'components/templates/SlideInChildren/SlideInChildren.molecule'
 
+import styles from './styles.module.scss'
+
 const ThreeActions = () => {
-  const { selectShape, noShapes, sortShapes, tmpShape } = useShapes(
+  const { selectShape, noShapes, sortShapes, selectActive } = useShapes(
     ({ selectShape, shapes, sortShapes, tmpShape }) => ({
       selectShape,
       noShapes: shapes.length === 0,
       sortShapes,
-      tmpShape,
+      selectActive: Boolean(tmpShape),
     })
   )
 
   return (
-    <SlideInChildren spacing="sm">
+    <SlideInChildren spacing="sm" className={styles.wrapper} data-select-active={selectActive}>
       <LilDrawer onShapeSelect={selectShape} />
       <LilBox mt="lg">
         <Stack spacing="xs">
@@ -33,6 +35,7 @@ const ThreeActions = () => {
             leftFontAwesomeIcon={faShapes}
             w="100%"
             disabled={noShapes}
+            onClick={sortShapes}
           />
         </Stack>
       </LilBox>

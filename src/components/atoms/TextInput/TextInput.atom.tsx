@@ -4,7 +4,7 @@ import { Box, TextInput, type TextInputProps } from '@mantine/core'
 
 import styles from './styles.module.scss'
 
-const EHTextInput = ({ ...props }: Partial<TextInputProps>) => {
+const MTextInput = ({ ...props }: Partial<TextInputProps>) => {
   const [focused, setFocused] = useState(false),
     isActiveByValue = props?.value ? (props.value as string).length > 0 : false
 
@@ -16,7 +16,7 @@ const EHTextInput = ({ ...props }: Partial<TextInputProps>) => {
     >
       <TextInput
         type="text"
-        className={styles.ehTxtInput}
+        className={styles.txtInput}
         {...props}
         onFocus={(e) => {
           setFocused(true)
@@ -31,4 +31,4 @@ const EHTextInput = ({ ...props }: Partial<TextInputProps>) => {
   )
 }
 
-export default EHTextInput
+export default MTextInput

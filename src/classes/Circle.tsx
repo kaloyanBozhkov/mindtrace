@@ -11,4 +11,21 @@ export default class Circle extends Shape {
     super(shapeProps)
     this.radius = radius
   }
+
+  static getInitialFormFields() {
+    return {
+      radius: 0,
+      ...Shape.getInitialFormFields(),
+    }
+  }
+
+  static getFormValidaor() {
+    return {
+      radius: (v: string | number) => {
+        if (!v) return 'Radius must be greater than 0'
+        return null
+      },
+      ...Shape.getFormValidaor(),
+    }
+  }
 }
