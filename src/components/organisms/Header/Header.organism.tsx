@@ -1,8 +1,9 @@
 import { UserButton } from '@clerk/nextjs'
 import { Group } from '@mantine/core'
-import Logo from 'components/atoms/Logo/Logo.atom'
 
 import Link from 'next/link'
+
+import Logo from 'components/atoms/Logo/Logo.atom'
 
 import styles from './styles.module.scss'
 

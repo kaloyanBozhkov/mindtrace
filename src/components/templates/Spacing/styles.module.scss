@@ -1,0 +1,38 @@
+@import "scss/breakpoints";
+@import "scss/sizes";
+
+$p: $spacing-p;
+$p-md: $spacing-p-md;
+$p-sm: $spacing-p-sm;
+
+.spacing {
+  // @TODO consider if designs og size of 1000px is of max width is a good idea, or to up it or remove it and leave padding only
+  // max-width: 1400px;
+
+  &[data-sides="all"] {
+    padding: $p;
+
+    @include mediaQuery(mobile) {
+      padding: $p-sm;
+    }
+
+    @include mediaQuery(tabletSmall) {
+      padding: $p-md;
+    }
+  }
+
+  &[data-sides="left-right"] {
+    padding-left: $p;
+    padding-right: $p;
+
+    @include mediaQuery(mobile) {
+      padding-left: $p-sm;
+      padding-right: $p-sm;
+    }
+
+    @include mediaQuery(tabletSmall) {
+      padding-left: $p-md;
+      padding-right: $p-md;
+    }
+  }
+}

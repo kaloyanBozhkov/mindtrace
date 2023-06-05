@@ -1,6 +1,7 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 import { Center } from '@mantine/core'
+
 import Issue from 'components/templates/Issue/Issue.template'
 
 type Props = {
@@ -31,7 +32,7 @@ class ErrorBoundary extends Component<Props, State> {
 
     // Render either fallback UI for error or children if no errorMsg
     return errorMsg ? (
-      <Center>
+      <Center h="100%" w="100%" bg="backGradientPrimary.0">
         <Issue
           message={
             process.env.NODE_ENV === 'development' ? errorMsg : 'Oops! Something went wrong :('

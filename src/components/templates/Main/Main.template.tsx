@@ -1,22 +1,17 @@
 import { type ReactNode } from 'react'
 
-import { Group } from '@mantine/core'
-
 import styles from './styles.module.scss'
 
 type MainTemplateProps = {
   header: ReactNode
-  navbar: ReactNode
   children: ReactNode
+  modifier?: 'with-bg'
 }
 
-const MainTemplate = ({ header, children, navbar }: MainTemplateProps) => (
-  <div className={styles.mainTemplate}>
+const MainTemplate = ({ header, children, modifier = 'with-bg' }: MainTemplateProps) => (
+  <div className={styles.mainTemplate} data-modifier={modifier}>
     <header>{header}</header>
-    <Group className={styles.contentWrapper}>
-      <section className={styles.navbar}>{navbar}</section>
-      <main>{children}</main>
-    </Group>
+    <main>{children}</main>
   </div>
 )
 

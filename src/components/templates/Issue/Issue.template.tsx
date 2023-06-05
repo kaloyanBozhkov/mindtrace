@@ -6,6 +6,8 @@ import { Stack, Text } from '@mantine/core'
 
 import Link from 'next/link'
 
+import ActionButton from 'components/atoms/ActionButton/ActionButton.atom'
+
 import styles from './styles.module.scss'
 
 type IssueProps =
@@ -22,8 +24,7 @@ const Issue = ({ children, message, withoutButton = false }: IssueProps) => {
       </Stack>
       {!withoutButton && (
         <Link href="/" data-naked="true">
-          GO back
-          {/* <EHButton label="Go Back" modifier="primary" /> */}
+          <ActionButton label="Go Back" modifier="primary" />
         </Link>
       )}
     </Stack>

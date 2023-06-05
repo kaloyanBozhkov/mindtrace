@@ -6,19 +6,19 @@
 
   h1,
   svg {
-    // color: $textPrimary;
+    color: var(--mantine-color-frontPrimary-0);
   }
 
   svg {
     width: 15rem;
     height: 15rem;
-    // margin-bottom: $marginUnit;
+    margin-bottom: var(--mantine-spacing-xl);
 
     @include animate(rotate-360, 1s, 0s);
   }
 
   > a {
-    // margin-top: $tapUnit;
+    margin-top: var(--mantine-spacing-lg);
   }
 
   > div {
@@ -27,7 +27,7 @@
 
     .message {
       b {
-        // color: $primaryFront;
+        color: var(--mantine-color-frontPrimary-0);
         font-weight: bold;
       }
     }

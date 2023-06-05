@@ -1,5 +1,6 @@
 @import "scss/breakpoints.scss";
 @import "scss/sizes.scss";
+@import "scss/mixins.scss";
 
 .mainTemplate {
   width: 100%;
@@ -10,41 +11,34 @@
   position: relative;
   transition: all 300ms;
 
+  &[data-modifier="with-bg"] {
+    background-image: var(--mantine-color-backGradientPrimary-0);
+  }
+
   > header {
     width: 100%;
     background: var(--mantine-color-gradient-0);
     height: $headerH;
+    z-index: 2;
+
+    @include animate(slide-in-top, 400ms, 0s);
   }
 
-  > .contentWrapper {
+  > main {
     flex: 1;
-    gap: 0;
+    margin: 0;
+    z-index: 1;
+    height: 100%;
+    opacity: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--mantine-spacing-sm);
 
-    > main {
+    > div {
       flex: 1;
-      margin: 0;
-      // background-color: $secondaryFront;
-      z-index: 1;
-      height: 100%;
     }
 
-    > section {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 0;
-      height: 100%;
-      width: 300px;
-      background: var(--mantine-color-gradient-1);
-
-      @include mediaQuery(mobile) {
-        display: none;
-      }
-
-      @include mediaQuery(tabletSmall) {
-        display: none;
-      }
-    }
+    @include animate(opacity-in, 500ms, 400ms);
   }
 }

@@ -2,16 +2,23 @@ import type { DefaultMantineColor, MantineThemeOverride, Tuple } from '@mantine/
 
 // will be available as css variables with var(--mantine-color-{colorName}-{shade})
 export const colors = {
-  primary: ['#92B4F4'],
-  primaryActive: ['#5E7CE2'],
-  primaryBg: ['#0A369D', ''],
-  secondary: [],
-  secondaryActive: [],
-  secondaryBg: [],
-  gradient: [
-    'linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);',
-    'linear-gradient(180deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);',
+  frontPrimary: ['#9ACBFF', '#003355'],
+  frontPrimaryActive: ['#a3cafa'],
+  fontOldPrimary: ['#007aff'],
+  frontSecondary: ['#FFF', '#D6E4F7', '#C2C7CF', '#8C9199'],
+  frontAction: ['#FFD192', '#232323', '#252525', '#c9c8c8', '#fdfdfd'],
+  frontActionActive: ['#e8c497'],
+  backPrimary: ['#3A4857', '#333538', 'rgba(35, 35, 35, 0.5)'],
+  backPrimaryActive: ['#4a5362'],
+  backSecondary: ['#121316', '#42474e'],
+  backGradientPrimary: [
+    'linear-gradient(to bottom, #223041 0%, #0f141a 33%)',
+    ' linear-gradient(180deg, rgba(58, 72, 87, 0.1) 0%, rgba(58, 72, 87, 0) 50.08%);',
   ],
+  inputBackPrimary: ['#343538', '#1f1f22'],
+  inputBackPrimaryActive: ['#424248', '#2e3032'],
+  invalid: ['#fa5252'],
+  transparentBgs: ['rgba(255, 255, 255, 0.1)'],
 }
 
 export const spacing = {

@@ -1,0 +1,45 @@
+@import "scss/mixins.scss";
+
+.lilDrawer {
+    background-color: var(--mantine-color-backPrimary-1);
+    width: 300px;
+    height: auto;
+    padding: var(--mantine-spacing-md);
+    border-radius: var(--mantine-radius-lg);
+    min-height: 300px;
+    color: var(--mantine-color-frontSecondary-1);
+
+    &::after {
+        margin: auto;
+    }
+
+    &[data-shape="circle"],
+    &[data-shape="rectangle"] {
+        &::after {
+            content: "";
+            opacity: 0;
+            border: 2px dashed var(--mantine-color-frontSecondary-1);
+            width: 100px;
+            height: 100px;
+            @include animate(opacity-in, 2s);
+        }
+    }
+    &[data-shape="none"] {
+        &::after {
+            content: "Lil Preview";
+            opacity: 0.4;
+        }
+    }
+
+    &[data-shape="rectangle"] {
+        &::after {
+            width: 150px;
+        }
+    }
+
+    &[data-shape="circle"] {
+        &::after {
+            border-radius: 150%;
+        }
+    }
+}
