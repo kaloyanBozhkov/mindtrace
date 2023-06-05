@@ -1,4 +1,4 @@
-import { protectedProcedure } from '@/server/trpc/trpc'
+import { protectedProcedure } from 'server/trpc/trpc'
 
 export const create = protectedProcedure.mutation(async ({ ctx: { prisma, auth } }) => {
   const existing = await prisma.user.findUnique({

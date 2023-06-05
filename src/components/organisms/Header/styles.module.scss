@@ -1,4 +1,16 @@
 .header {
     padding: var(--mantine-spacing-md);
-    background: var(--mantine-color-gradient-0);
+    height: 100%;
+    width: 100%;
+
+    > a {
+        transition: all 300ms;
+
+        &:first-child {
+            &:hover {
+                transform: scale(0.99);
+                filter: contrast(0.3);
+            }
+        }
+    }
 }

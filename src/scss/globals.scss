@@ -23,7 +23,6 @@ html {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: Roboto, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 
   @include thinScrollBar();
 }

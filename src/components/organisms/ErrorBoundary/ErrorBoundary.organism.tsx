@@ -1,8 +1,7 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 import { Center } from '@mantine/core'
-
-import Issue from '@/components/templates/Issue/Issue.template'
+import Issue from 'components/templates/Issue/Issue.template'
 
 type Props = {
   children: ReactNode

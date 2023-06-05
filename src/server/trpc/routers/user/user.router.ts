@@ -1,4 +1,4 @@
-import { createTRPCRouter } from '@/server/trpc/trpc'
+import { createTRPCRouter } from 'server/trpc/trpc'
 
 import { create } from './create'
 

@@ -1,18 +1,18 @@
 import { ClerkProvider } from '@clerk/nextjs'
-import { AppShell, MantineProvider, Navbar } from '@mantine/core'
+import { MantineProvider } from '@mantine/core'
 
 import { type AppType } from 'next/app'
 
-import { useTheme } from '@/stores/Theme.store'
+import { useTheme } from 'stores/Theme.store'
 
-import ErrorBoundary from '@/components/organisms/ErrorBoundary/ErrorBoundary.organism'
-import Header from '@/components/organisms/Header/Header.organism'
+import ErrorBoundary from 'components/organisms/ErrorBoundary/ErrorBoundary.organism'
+import Header from 'components/organisms/Header/Header.organism'
 
-import MainTemplate from '@/components/templates/Main/Main.template'
+import MainTemplate from 'components/templates/Main/Main.template'
 
-import { trpcNext } from '@/utils/trpcNext'
+import { trpcNext } from 'utils/trpcNext'
 
-import '@/scss/globals.scss'
+import 'scss/globals.scss'
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const theme = useTheme(({ theme }) => theme)

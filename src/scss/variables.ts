@@ -8,7 +8,10 @@ export const colors = {
   secondary: [],
   secondaryActive: [],
   secondaryBg: [],
-  gradient: ['linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);'],
+  gradient: [
+    'linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);',
+    'linear-gradient(180deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);',
+  ],
 }
 
 export const spacing = {
@@ -36,7 +39,7 @@ export const defaultTheme: MantineThemeOverride = {
   breakpoints,
   fontSizes,
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif',
+    'Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif',
 }
 
 export type ITheme = typeof defaultTheme

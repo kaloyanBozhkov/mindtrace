@@ -1,8 +1,7 @@
 import { getAuth } from '@clerk/nextjs/server'
 import { type inferAsyncReturnType } from '@trpc/server'
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next'
-
-import { prisma } from '@/server/prisma'
+import { prisma } from 'server/prisma'
 
 /** Context creator for testing purposes */
 const createInnerTRPCContext = ({ req }: CreateNextContextOptions) => {
