@@ -5,7 +5,7 @@ interface IRectangle extends IShape {
   height: number
 }
 
-export default class Circle extends Shape {
+export default class Rectangle extends Shape {
   width: number
   height: number
 

@@ -1,20 +1,18 @@
 import { useState } from 'react'
 
 import { faCircle, faSquareFull } from '@fortawesome/free-regular-svg-icons'
-import { Divider, Stack } from '@mantine/core'
+import { Stack } from '@mantine/core'
 import { Text } from '@mantine/core'
+
+import { type ShapeNaming } from 'types/common'
 
 import ActionButton from 'components/atoms/ActionButton/ActionButton.atom'
 
 import styles from './styles.module.scss'
 
-type ShapeSelect = 'none' | 'rectangle' | 'circle'
+type ShapeSelect = 'none' | ShapeNaming
 
-const LilDrawer = ({
-  onShapeSelect,
-}: {
-  onShapeSelect: (shape: Omit<ShapeSelect, 'none'>) => void
-}) => {
+const LilDrawer = ({ onShapeSelect }: { onShapeSelect: (shape: ShapeNaming) => void }) => {
   const [shape, setShape] = useState<ShapeSelect>('none')
 
   return (
