@@ -13,14 +13,15 @@ import SlideInChildren from 'components/templates/SlideInChildren/SlideInChildre
 import styles from './styles.module.scss'
 
 const ThreeActions = () => {
-  const { selectShape, noShapes, sortShapes, selectActive } = useShapes(
-    ({ selectShape, shapes, sortShapes, tmpShape }) => ({
+  const { selectShape, noShapes, sortShapes, selectActive, toggleDeleteMode, isDeleting } =
+    useShapes(({ selectShape, shapes, sortShapes, tmpShape, isDeleting, toggleDeleteMode }) => ({
+      toggleDeleteMode,
       selectShape,
-      noShapes: shapes.length === 0,
       sortShapes,
       selectActive: Boolean(tmpShape),
-    })
-  )
+      noShapes: shapes.length === 0,
+      isDeleting,
+    }))
 
   return (
     <SlideInChildren spacing="sm" className={styles.wrapper} data-select-active={selectActive}>
@@ -45,10 +46,12 @@ const ThreeActions = () => {
             Danger zone
           </Text>
           <ActionButton
-            label="Remove shape"
-            leftFontAwesomeIcon={faTrash}
             w="100%"
+            label={isDeleting ? 'Abort removal' : 'Remove shape'}
+            leftFontAwesomeIcon={faTrash}
             disabled={noShapes}
+            onClick={toggleDeleteMode}
+            modifier={isDeleting ? 'secondary' : 'primary'}
           />
         </Stack>
       </LilBox>

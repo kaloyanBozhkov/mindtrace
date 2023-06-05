@@ -15,6 +15,13 @@ export default class Rectangle extends Shape {
     this.height = height
   }
 
+  getThreeShape({ onClick }: { onClick?: () => void }) {
+    return super.getThreeShape({
+      args: [this.width, this.height],
+      onClick,
+    })
+  }
+
   static getInitialFormFields() {
     return {
       width: 0,

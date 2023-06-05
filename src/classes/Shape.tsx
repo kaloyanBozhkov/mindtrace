@@ -1,4 +1,5 @@
 import { Box } from '@react-three/drei'
+import { type BoxGeometry } from 'three'
 import { generateUUID } from 'three/src/math/MathUtils'
 
 import { isValidColor } from 'utils/common'
@@ -22,8 +23,29 @@ export default class Shape {
     this.id = generateUUID()
   }
 
-  getThreeShape() {
-    return <Box material-color="hotpink" position={[this.x, this.y, 0]} />
+  getThreeShape({
+    args,
+    onClick,
+  }: {
+    args?: [
+      width?: number,
+      height?: number,
+      depth?: number,
+      widthSegments?: number,
+      heightSegments?: number,
+      depthSegments?: number
+    ]
+    onClick?: () => void
+  }) {
+    // @TODO if shapes grow, change this
+    return (
+      <Box
+        material-color={this.color}
+        args={args}
+        position={[this.x, this.y, 0]}
+        onClick={onClick}
+      />
+    )
   }
 
   static getInitialFormFields() {

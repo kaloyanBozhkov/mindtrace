@@ -20,25 +20,31 @@ const SetupShape = ({
   onCancel,
 }: {
   shapeNaming: ShapeNaming
-  onConfirm: (setup: Record<string, string | number>) => void
+  onConfirm: (
+    setup: Record<string, string | number>,
+    shapeClass: typeof Shape | typeof Rectangle | typeof Circle
+  ) => void
   onCancel: () => void
 }) => {
-  const { initialValues, validate } = useMemo(() => {
+  const { initialValues, validate, shapeClass } = useMemo(() => {
       switch (shapeNaming) {
         case 'circle':
           return {
             initialValues: Circle.getInitialFormFields(),
             validate: Circle.getFormValidaor(),
+            shapeClass: Circle,
           }
         case 'rectangle':
           return {
             initialValues: Rectangle.getInitialFormFields(),
             validate: Rectangle.getFormValidaor(),
+            shapeClass: Rectangle,
           }
         default:
           return {
             initialValues: Shape.getInitialFormFields(),
             validate: Shape.getFormValidaor(),
+            shapeClass: Shape,
           }
       }
     }, [shapeNaming]),
@@ -69,7 +75,7 @@ const SetupShape = ({
 
             if (validationResult.hasErrors) return
 
-            onConfirm(form.values)
+            onConfirm(form.values, shapeClass)
           }}
           pl="xl"
           pr="xl"

@@ -14,11 +14,15 @@ type ShapesStore = {
   selectShape: (tmpShape: ShapeNaming | null) => void
   addShape: (shape: Shape) => void
   sortShapes: () => void
+  isDeleting: boolean
+  toggleDeleteMode: () => void
+  deleteShape: (shapeId: string) => void
 }
 
 export const useShapes = create<ShapesStore>((set) => ({
   shapes: [],
   tmpShape: null,
+  isDeleting: false,
   addShape: (s) =>
     set((prev) => ({
       ...prev,
@@ -33,5 +37,16 @@ export const useShapes = create<ShapesStore>((set) => ({
   sortShapes: () =>
     set((prev) => ({
       ...prev,
+    })),
+  deleteShape: (shapeId) =>
+    set((prev) => ({
+      ...prev,
+      isDeleting: false,
+      shapes: prev.shapes.filter((s) => s.id !== shapeId),
+    })),
+  toggleDeleteMode: () =>
+    set((prev) => ({
+      ...prev,
+      isDeleting: !prev.isDeleting,
     })),
 }))

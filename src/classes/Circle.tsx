@@ -12,6 +12,13 @@ export default class Circle extends Shape {
     this.radius = radius
   }
 
+  getThreeShape({ onClick }: { onClick?: () => void }) {
+    return super.getThreeShape({
+      args: [this.radius * 2, this.radius * 2],
+      onClick,
+    })
+  }
+
   static getInitialFormFields() {
     return {
       radius: 0,

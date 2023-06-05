@@ -19,14 +19,7 @@ import { deg2rad, getClickCoords } from 'components/three/utils/common'
 import styles from './styles.module.scss'
 
 const ThreeMain = () => {
-  const { addShape, shapes, tmpShape, selectShape } = useShapes(
-      ({ tmpShape, addShape, shapes, selectShape }) => ({
-        tmpShape,
-        addShape,
-        shapes,
-        selectShape,
-      })
-    ),
+  const { addShape, shapes, tmpShape, selectShape, deleteShape, isDeleting } = useShapes((s) => s),
     canvasRef = useRef<HTMLCanvasElement | null>(null),
     { openModal, closeModal } = useModal(({ controls: { openModal, closeModal } }) => ({
       openModal,
@@ -42,6 +35,7 @@ const ThreeMain = () => {
         onClick={(event) => {
           if (!canvasRef.current || !tmpShape) return
 
+          // @TODO move to hook if this grows or is gonnabe reused
           const size = { width: canvasRef.current.width, height: canvasRef.current.height },
             c = getClickCoords(size, event)
 
@@ -55,11 +49,11 @@ const ThreeMain = () => {
                   selectShape(null)
                   closeModal()
                 }}
-                onConfirm={(setup) => {
+                onConfirm={(setup, shapeClass) => {
                   // @TODO type annotate properly so based on shapeNaming the returned type will be inferred
                   // eslint-disable-next-line
                   // @ts-ignore
-                  addShape(new Rectangle({ ...setup, ...c }))
+                  addShape(new shapeClass({ ...setup, ...c }))
                   closeModal()
                 }}
               />
@@ -69,7 +63,7 @@ const ThreeMain = () => {
       >
         <XR>
           <Suspense fallback={<LoaderMolecule />}>
-            <MainScene shapes={shapes} />
+            <MainScene shapes={shapes} onDeleteShape={isDeleting ? deleteShape : undefined} />
           </Suspense>
           <OrbitControls
             minDistance={2.5}
