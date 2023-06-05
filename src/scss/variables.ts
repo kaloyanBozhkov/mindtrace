@@ -8,7 +8,7 @@ export const colors = {
   frontSecondary: ['#FFF', '#D6E4F7', '#C2C7CF', '#8C9199'],
   frontAction: ['#FFD192', '#232323', '#252525', '#c9c8c8', '#fdfdfd'],
   frontActionActive: ['#e8c497'],
-  backPrimary: ['#3A4857', '#333538', 'rgba(35, 35, 35, 0.5)'],
+  backPrimary: ['#3A4857', '#333538', 'rgba(35, 35, 35, 0.5)', 'rgba(25, 25, 25, 1)'],
   backPrimaryActive: ['#4a5362'],
   backSecondary: ['#121316', '#42474e'],
   backGradientPrimary: [

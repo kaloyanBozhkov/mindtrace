@@ -1,11 +1,6 @@
 @import "scss/mixins.scss";
 
 .lilDrawer {
-    background-color: var(--mantine-color-backPrimary-1);
-    width: 300px;
-    height: auto;
-    padding: var(--mantine-spacing-md);
-    border-radius: var(--mantine-radius-lg);
     min-height: 300px;
     color: var(--mantine-color-frontSecondary-1);
 

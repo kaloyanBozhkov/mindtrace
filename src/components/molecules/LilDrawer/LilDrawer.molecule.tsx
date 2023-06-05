@@ -8,6 +8,8 @@ import { type ShapeNaming } from 'types/common'
 
 import ActionButton from 'components/atoms/ActionButton/ActionButton.atom'
 
+import LilBox from 'components/templates/LilBox/LilBox.template'
+
 import styles from './styles.module.scss'
 
 type ShapeSelect = 'none' | ShapeNaming
@@ -16,25 +18,27 @@ const LilDrawer = ({ onShapeSelect }: { onShapeSelect: (shape: ShapeNaming) => v
   const [shape, setShape] = useState<ShapeSelect>('none')
 
   return (
-    <Stack className={styles.lilDrawer} data-shape={shape}>
-      <Text weight="600" align="center">
-        Click shape to add:
-      </Text>
-      <ActionButton
-        label="Circle"
-        leftFontAwesomeIcon={faCircle}
-        onClick={() => onShapeSelect('circle')}
-        onMouseEnter={() => setShape('circle')}
-        onMouseLeave={() => setShape('none')}
-      />
-      <ActionButton
-        label="Rectangle"
-        leftFontAwesomeIcon={faSquareFull}
-        onClick={() => onShapeSelect('rectangle')}
-        onMouseEnter={() => setShape('rectangle')}
-        onMouseLeave={() => setShape('none')}
-      />
-    </Stack>
+    <LilBox>
+      <Stack className={styles.lilDrawer} data-shape={shape}>
+        <Text weight="600" align="center">
+          Click shape to add:
+        </Text>
+        <ActionButton
+          label="Circle"
+          leftFontAwesomeIcon={faCircle}
+          onClick={() => onShapeSelect('circle')}
+          onMouseEnter={() => setShape('circle')}
+          onMouseLeave={() => setShape('none')}
+        />
+        <ActionButton
+          label="Rectangle"
+          leftFontAwesomeIcon={faSquareFull}
+          onClick={() => onShapeSelect('rectangle')}
+          onMouseEnter={() => setShape('rectangle')}
+          onMouseLeave={() => setShape('none')}
+        />
+      </Stack>
+    </LilBox>
   )
 }
 
