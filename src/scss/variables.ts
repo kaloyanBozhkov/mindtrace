@@ -40,7 +40,9 @@ export const breakpoints = {
 }
 
 export const defaultTheme: MantineThemeOverride = {
+  // @TODO fix type annotation
   // eslint-disable-next-line
+  // @ts-ignore
   colors,
   spacing,
   breakpoints,
