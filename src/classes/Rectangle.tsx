@@ -22,25 +22,21 @@ export default class Rectangle extends Shape {
     })
   }
 
-  static getInitialFormFields() {
-    return {
-      width: 0,
-      height: 0,
-      ...Shape.getInitialFormFields(),
-    }
-  }
+  static getInitialFormFields = () => ({
+    width: 0,
+    height: 0,
+    ...Shape.getInitialFormFields(),
+  })
 
-  static getFormValidaor() {
-    return {
-      width: (v: string | number) => {
-        if (!v) return 'Width must be set & greater than 0'
-        return null
-      },
-      height: (v: string | number) => {
-        if (!v) return 'Height must be set & greater than 0'
-        return null
-      },
-      ...Shape.getFormValidaor(),
-    }
-  }
+  static getFormValidaor = () => ({
+    width: (v: string | number) => {
+      if (!v) return 'Width must be set & greater than 0'
+      return null
+    },
+    height: (v: string | number) => {
+      if (!v) return 'Height must be set & greater than 0'
+      return null
+    },
+    ...Shape.getFormValidaor(),
+  })
 }

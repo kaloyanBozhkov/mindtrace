@@ -1,5 +1,4 @@
 import { Box } from '@react-three/drei'
-import { type BoxGeometry } from 'three'
 import { generateUUID } from 'three/src/math/MathUtils'
 
 import { isValidColor } from 'utils/common'
@@ -27,17 +26,9 @@ export default class Shape {
     args,
     onClick,
   }: {
-    args?: [
-      width?: number,
-      height?: number,
-      depth?: number,
-      widthSegments?: number,
-      heightSegments?: number,
-      depthSegments?: number
-    ]
+    args?: [width?: number, height?: number]
     onClick?: () => void
   }) {
-    // @TODO if shapes grow, change this
     return (
       <Box
         material-color={this.color}
@@ -48,19 +39,15 @@ export default class Shape {
     )
   }
 
-  static getInitialFormFields() {
-    return {
-      color: '',
-    }
-  }
+  static getInitialFormFields = () => ({
+    color: '',
+  })
 
-  static getFormValidaor() {
-    return {
-      color: (v: string) => {
-        if (!v.trim()) return 'Color must be set'
-        if (!isValidColor(v)) return 'Value is not a valid color'
-        return null
-      },
-    }
-  }
+  static getFormValidaor = () => ({
+    color: (v: string) => {
+      if (!v.trim()) return 'Color must be set'
+      if (!isValidColor(v)) return 'Value is not a valid color'
+      return null
+    },
+  })
 }
