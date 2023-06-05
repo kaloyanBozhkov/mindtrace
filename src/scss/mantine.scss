@@ -1,0 +1,77 @@
+@import "mixins";
+
+.mantine-Modal-header,
+.mantine-Modal-body {
+  background-color: var(--mantine-color-backPrimary-2);
+  color: var(--mantine-color-frontSecondary-0);
+}
+
+// replace  ModalProvider's default modal header/title with our Modal molecule
+.mantine-Modal-header {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  > h2 {
+    display: none;
+  }
+}
+
+// make up for padding that hidden title was providing
+.mantine-Modal-body:last-child {
+  padding-top: 1rem;
+}
+// end replace
+
+.mantine-Modal-content {
+  box-shadow: 0 0 20px 0 rgb(255 255 255 / 0.05);
+}
+
+.mantine-Drawer-content {
+  display: flex;
+  flex-direction: column;
+  color: var(--mantine-color-frontSecondary-2);
+  background-color: var(--mantine-color-backSecondary-0);
+  // @TODO if drawer comes from another side of the screen
+  border-left: 1px solid var(--mantine-color-backSecondary-1);
+
+  @media (max-width: 438px) {
+    border-left: none;
+  }
+
+  svg {
+    color: var(--mantine-color-frontSecondary-2);
+  }
+
+  .mantine-Drawer-header {
+    padding: var(--mantine-spacing-xl);
+    background-color: var(--mantine-color-backSecondary-0);
+
+    h2 {
+      font-size: 22px;
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .mantine-Drawer-body {
+    padding-top: var(--mantine-spacing-xs);
+    padding-left: var(--mantine-spacing-xl);
+    padding-right: var(--mantine-spacing-xl);
+    flex: 1;
+    height: 100%;
+  }
+}
+
+.mantine-Skeleton-root {
+  &::before {
+    background-color: var(--mantine-color-inputBackPrimary-1);
+  }
+
+  &::after {
+    background-color: var(--mantine-color-inputBackPrimaryActive-0);
+  }
+}

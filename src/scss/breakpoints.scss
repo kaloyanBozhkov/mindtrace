@@ -1,0 +1,39 @@
+@mixin mediaQuery($device) {
+  // Desktop design down
+  @if $device == mobile {
+    @media (max-width: 599px) {
+      @content;
+    }
+  }
+
+  // for rare cases
+  @if $device == smallishTablet {
+    @media (min-width: 600px) and (max-width: 765px) {
+      @content;
+    }
+  }
+
+  @if $device == tabletSmall {
+    @media (min-width: 600px) and (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @if $device == tabletBig {
+    @media (min-width: 901px) and (max-width: 1199px) {
+      @content;
+    }
+  }
+
+  @if $device == desktop {
+    @media (min-width: 1200px) and (max-width: 1800px) {
+      @content;
+    }
+  }
+
+  @if $device == big-desktop {
+    @media (min-width: 1801px) {
+      @content;
+    }
+  }
+}

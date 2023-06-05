@@ -1,0 +1,19 @@
+.cl-internal-b3fm6y,
+.cl-internal-q6wheb,
+// profile icon on organisation card
+.cl-internal-iu9znb,
+.cl-internal-wkkub3 {
+  display: none;
+}
+
+.cl-userButtonPopoverFooter.cl-internal-y2rcgc {
+  &::after {
+    content: "Secured by Mindtrace.";
+    display: block;
+    font-size: small;
+  }
+}
+
+.cl-organizationSwitcherTrigger .cl-userPreviewSecondaryIdentifier {
+  max-width: 235px;
+}
