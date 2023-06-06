@@ -89,14 +89,14 @@ export default class Shape {
         }
 
         if (!prevObj) {
-          const { width, height } = getMeshSidePoints(s.three)
-          s.y = cardinals.leftCenter.y + width
-          s.x = cardinals.leftCenter.x + height
+          const { width } = getMeshSidePoints(s.three)
+          s.y = cardinals.leftCenter.y
+          s.x = cardinals.leftCenter.x + width
         } else {
           const biggest = shapes[0]!,
             { right, halfWidth: prevHalfW } = getMeshSidePoints(prevObj),
             { halfWidth: halfW } = getMeshSidePoints(s.three),
-            paddedRight = right.x + prevHalfW + padding + halfW
+            paddedRight = right.x + halfW + padding
 
           // position Y of each ordered shape based on biggest one's Y
           s.y = biggest.y

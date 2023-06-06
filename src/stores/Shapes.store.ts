@@ -26,13 +26,11 @@ export const useShapes = create<ShapesStore>((set) => ({
   shapes: [],
   tmpShape: null,
   isDeleting: false,
-  justSorted: false,
   addShape: (s) =>
     set((prev) => ({
       ...prev,
       shapes: [...prev.shapes, s],
       tmpShape: null,
-      justSorted: false,
     })),
   selectShape: (tmpShape) =>
     set((prev) => ({
