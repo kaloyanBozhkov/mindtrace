@@ -94,7 +94,7 @@ export default class Shape {
           s.x = cardinals.leftCenter.x + width
         } else {
           const biggest = shapes[0]!,
-            { right, halfWidth: prevHalfW } = getMeshSidePoints(prevObj),
+            { right } = getMeshSidePoints(prevObj),
             { halfWidth: halfW } = getMeshSidePoints(s.three),
             paddedRight = right.x + halfW + padding
 

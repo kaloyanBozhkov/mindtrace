@@ -31,7 +31,7 @@ const ThreeMain = () => {
     cameraRef = useRef<Camera | null>(null)
 
   return (
-    <MantineBox className={styles.vrWrapper}>
+    <MantineBox className={styles.vrWrapper} data-select-ative={Boolean(tmpShape)}>
       <VRButton className={styles.vrButton} />
       <Canvas
         ref={canvasRef}
