@@ -1,6 +1,6 @@
 import { type MouseEvent } from 'react'
 
-import { type Camera, Vector3 } from 'three'
+import { type Camera, type Mesh, Vector3 } from 'three'
 
 export const deg2rad = (deg: number) => deg * (Math.PI / 180)
 
@@ -57,5 +57,36 @@ export const getCardinalPoints = (camera: Camera, canvas: HTMLDivElement) => {
     rightCenter,
     leftCenter,
     center: new Vector3(centerX, centerY, 0),
+  }
+}
+
+export const getCardinalsDirty = () => {
+  const canvas = document.querySelector('canvas')
+  if (!canvas || !window.cameraRef.current) return null
+  const cardinals = getCardinalPoints(window.cameraRef.current, canvas as unknown as HTMLDivElement)
+  return cardinals
+}
+
+export const getMeshSidePoints = (m: Mesh) => {
+  const position = m.position.clone(),
+    scale = m.scale.clone(),
+    width = scale.x,
+    height = scale.y,
+    halfWidth = width / 2,
+    halfHeight = height / 2,
+    left = new Vector3(-halfWidth, 0, 0).applyQuaternion(m.quaternion).add(position),
+    right = new Vector3(halfWidth, 0, 0).applyQuaternion(m.quaternion).add(position),
+    top = new Vector3(0, halfHeight, 0).applyQuaternion(m.quaternion).add(position),
+    bottom = new Vector3(0, -halfHeight, 0).applyQuaternion(m.quaternion).add(position)
+
+  return {
+    left: { x: left.x, y: left.y },
+    right: { x: right.x, y: right.y },
+    top: { x: top.x, y: top.y },
+    bottom: { x: bottom.x, y: bottom.y },
+    width,
+    height,
+    halfWidth,
+    halfHeight,
   }
 }

@@ -1,9 +1,49 @@
+@import "scss/mixins";
+
 // specificity on purpose
 div.wrapper {
-  transition: all 1s;
+  .main,
+  .actions {
+    transition: all 1s;
+  }
 
-  &[data-select-active="true"] {
+  .actions {
+    align-items: center;
     opacity: 0;
+
+    > div {
+      opacity: 0.3;
+    }
+
+    > button {
+      pointer-events: all;
+    }
+
+    > * {
+      transition: all 800ms;
+    }
+
+    &[data-select-active="true"] {
+      opacity: 0;
+
+      > div {
+        opacity: 0;
+      }
+
+      > button {
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+
+    @include animate(opacity-in, 2s, 1.3s);
+  }
+
+  &[data-hide="true"] {
     pointer-events: none;
+
+    .main {
+      opacity: 0;
+    }
   }
 }

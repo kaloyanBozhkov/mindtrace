@@ -1,9 +1,11 @@
+import { type ShapeNaming } from '@types/common'
 import { create } from 'zustand'
-
-import { type ShapeNaming } from 'types/common'
 
 import type Circle from 'classes/Circle'
 import type Rectangle from 'classes/Rectangle'
+import ShapeClass from 'classes/Shape'
+
+import { getCardinalsDirty } from 'components/three/utils/common'
 
 export type Shape = Circle | Rectangle
 
@@ -12,7 +14,6 @@ type ShapesStore = {
   // about to be added, but must be configured
   tmpShape: ShapeNaming | null
   isDeleting: boolean
-  justSorted: boolean
   selectShape: (tmpShape: ShapeNaming | null) => void
   addShape: (shape: Shape) => void
   sortShapes: () => void
@@ -38,11 +39,21 @@ export const useShapes = create<ShapesStore>((set) => ({
       tmpShape,
     })),
   sortShapes: () =>
-    set((prev) => ({
-      ...prev,
-      shapes: prev.shapes.sort((a, b) => b.calcArea() - a.calcArea()),
-      justSorted: true,
-    })),
+    set((prev) => {
+      // sort by area: big -> small
+      const shapes = ShapeClass.sortShapesByArea(prev.shapes),
+        cardinals = getCardinalsDirty()
+
+      // canvas disappeared or cameraRef is whack
+      if (!cardinals) return prev
+
+      ShapeClass.orderShapes(shapes, cardinals)
+
+      return {
+        ...prev,
+        shapes,
+      }
+    }),
   deleteShape: (shapeId) =>
     set((prev) => ({
       ...prev,

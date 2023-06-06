@@ -38,6 +38,9 @@ const ThreeMain = () => {
         style={{ width: '100%' }}
         onCreated={(state) => {
           cameraRef.current = state.camera
+
+          // allow places outside of components to access, without using store for this
+          window.cameraRef = cameraRef
         }}
         onClick={(event) => {
           if (!canvasRef.current || !cameraRef.current || !tmpShape) return

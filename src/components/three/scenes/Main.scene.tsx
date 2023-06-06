@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef } from 'react'
+import { Fragment, useRef } from 'react'
 
 import { type Group } from 'three'
 
@@ -7,26 +7,15 @@ import { useShapes } from 'stores/Shapes.store'
 import useHoverOpacity from 'hooks/three/useHoverOpacity'
 
 const MainScene = () => {
-  const { shapes, isDeleting, deleteShape, justSorted } = useShapes(
-      ({ shapes, isDeleting, deleteShape, justSorted }) => ({
-        shapes,
-        isDeleting,
-        justSorted,
-        deleteShape,
-      })
-    ),
+  const { shapes, isDeleting, deleteShape } = useShapes(({ shapes, isDeleting, deleteShape }) => ({
+      shapes,
+      isDeleting,
+      deleteShape,
+    })),
     mainSceneRef = useRef<Group | null>(null)
 
   // animate when hovering for deletion
   useHoverOpacity({ parentRef: mainSceneRef, gate: isDeleting })
-
-  useEffect(() => {
-    if (!justSorted || !mainSceneRef.current) return
-
-    // let's sort on x Axis
-
-    console.log(shapes)
-  }, [justSorted, shapes])
 
   return (
     <group ref={mainSceneRef}>

@@ -18,6 +18,14 @@
     "noUncheckedIndexedAccess": true,
     "baseUrl": "./src"
   },
-  "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs"],
+  "include": [
+    ".eslintrc.cjs",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

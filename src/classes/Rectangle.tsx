@@ -27,7 +27,7 @@ export default class Rectangle extends Shape {
   }
 
   getThreeShape({ onClick }: { onClick?: () => void }) {
-    const geometry = new BoxGeometry(this.height, this.width, this.depth)
+    const geometry = new BoxGeometry(this.width, this.height, this.depth)
 
     return super.getThreeShape({
       geometry,
