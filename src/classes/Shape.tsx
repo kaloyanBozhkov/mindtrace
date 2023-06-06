@@ -1,7 +1,4 @@
-import { Box } from '@react-three/drei'
-import { generateUUID } from 'three/src/math/MathUtils'
-
-import { deg2rad } from 'components/three/utils/common'
+import { type BufferGeometry, type Mesh } from 'three'
 
 import { isValidColor, txtInputVal } from 'utils/common'
 
@@ -16,27 +13,30 @@ export default class Shape {
   y: number
   color: string
   id: string
+  three: Mesh | null
 
   constructor({ x, y, color }: IShape) {
     this.x = x
     this.y = y
     this.color = color
-    this.id = generateUUID()
+
+    // set after running getThreeShape
+    this.id = 'upcoming'
+    this.three = null
   }
 
-  getThreeShape({
-    args,
-    onClick,
-  }: {
-    args?: [width?: number, height?: number, depth?: number]
-    onClick?: () => void
-  }) {
+  getThreeShape({ geometry, onClick }: { geometry: BufferGeometry; onClick?: () => void }) {
     return (
-      <Box
+      <mesh
         material-color={this.color}
-        args={args}
+        geometry={geometry}
         position={[this.x, this.y, 0]}
         onClick={onClick}
+        ref={(ref) => {
+          if (!ref) return
+          this.three = ref
+          this.id = ref.uuid
+        }}
       />
     )
   }

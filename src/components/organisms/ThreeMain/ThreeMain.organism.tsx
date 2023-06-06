@@ -18,7 +18,11 @@ import { deg2rad, getClickCoords } from 'components/three/utils/common'
 import styles from './styles.module.scss'
 
 const ThreeMain = () => {
-  const { addShape, shapes, tmpShape, selectShape, deleteShape, isDeleting } = useShapes((s) => s),
+  const { addShape, tmpShape, selectShape } = useShapes(({ addShape, tmpShape, selectShape }) => ({
+      addShape,
+      tmpShape,
+      selectShape,
+    })),
     { openModal, closeModal } = useModal(({ controls: { openModal, closeModal } }) => ({
       openModal,
       closeModal,
@@ -38,9 +42,8 @@ const ThreeMain = () => {
         onClick={(event) => {
           if (!canvasRef.current || !cameraRef.current || !tmpShape) return
 
-          // @TODO move to hook if this grows or is gonnabe reused
+          // @TODO move to hook if this grows or is gonna be reused
           const c = getClickCoords(cameraRef.current, event)
-          console.log('s', { ...c })
 
           openModal({
             title: 'Setup shape details',
@@ -66,7 +69,7 @@ const ThreeMain = () => {
       >
         <XR>
           <Suspense fallback={<LoaderMolecule />}>
-            <MainScene shapes={shapes} onDeleteShape={isDeleting ? deleteShape : undefined} />
+            <MainScene />
           </Suspense>
           <OrbitControls
             minDistance={2.5}

@@ -1,4 +1,6 @@
-import { numInputVal, txtInputVal } from 'utils/common'
+import { BoxGeometry } from 'three'
+
+import { numInputVal } from 'utils/common'
 
 import Shape, { type IShape } from './Shape'
 
@@ -20,9 +22,15 @@ export default class Rectangle extends Shape {
     this.depth = depth
   }
 
+  calcArea() {
+    return this.width * this.height * this.depth
+  }
+
   getThreeShape({ onClick }: { onClick?: () => void }) {
+    const geometry = new BoxGeometry(this.height, this.width, this.depth)
+
     return super.getThreeShape({
-      args: [this.width, this.height, this.depth],
+      geometry,
       onClick,
     })
   }

@@ -1,6 +1,4 @@
-import { RoundedBox } from '@react-three/drei'
-
-import { deg2rad } from 'components/three/utils/common'
+import { SphereGeometry } from 'three'
 
 import { numInputVal } from 'utils/common'
 
@@ -18,17 +16,17 @@ export default class Circle extends Shape {
     this.radius = radius
   }
 
+  calcArea() {
+    return Math.PI * Math.pow(this.radius, 2)
+  }
+
   getThreeShape({ onClick }: { onClick?: () => void }) {
-    const wh = this.radius * 2
-    return (
-      <RoundedBox
-        onClick={onClick}
-        args={[wh, wh, wh]}
-        radius={this.radius}
-        position={[this.x, this.y, 0]}
-        material-color={this.color}
-      />
-    )
+    const geometry = new SphereGeometry(this.radius)
+
+    return super.getThreeShape({
+      geometry,
+      onClick,
+    })
   }
 
   static getInitialFormFields = () => ({
