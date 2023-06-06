@@ -1,7 +1,9 @@
 import { Box } from '@react-three/drei'
 import { generateUUID } from 'three/src/math/MathUtils'
 
-import { isValidColor } from 'utils/common'
+import { deg2rad } from 'components/three/utils/common'
+
+import { isValidColor, txtInputVal } from 'utils/common'
 
 export type IShape = {
   x: number
@@ -26,7 +28,7 @@ export default class Shape {
     args,
     onClick,
   }: {
-    args?: [width?: number, height?: number]
+    args?: [width?: number, height?: number, depth?: number]
     onClick?: () => void
   }) {
     return (
@@ -45,7 +47,8 @@ export default class Shape {
 
   static getFormValidaor = () => ({
     color: (v: string) => {
-      if (!v.trim()) return 'Color must be set'
+      const issue = txtInputVal('Color', 150, 3)(v)
+      if (issue) return issue
       if (!isValidColor(v)) return 'Value is not a valid color'
       return null
     },

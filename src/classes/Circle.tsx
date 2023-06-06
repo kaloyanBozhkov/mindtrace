@@ -1,5 +1,9 @@
 import { RoundedBox } from '@react-three/drei'
 
+import { deg2rad } from 'components/three/utils/common'
+
+import { numInputVal } from 'utils/common'
+
 import Shape, { type IShape } from './Shape'
 
 interface ICircle extends IShape {
@@ -19,8 +23,9 @@ export default class Circle extends Shape {
     return (
       <RoundedBox
         onClick={onClick}
-        args={[wh, wh]}
+        args={[wh, wh, wh]}
         radius={this.radius}
+        position={[this.x, this.y, 0]}
         material-color={this.color}
       />
     )
@@ -32,10 +37,7 @@ export default class Circle extends Shape {
   })
 
   static getFormValidaor = () => ({
-    radius: (v: string | number) => {
-      if (!v) return 'Radius must be greater than 0'
-      return null
-    },
+    radius: numInputVal('Width', 10, 0.01),
     ...Shape.getFormValidaor(),
   })
 }
