@@ -36,13 +36,11 @@ const ThreeMain = () => {
           cameraRef.current = state.camera
         }}
         onClick={(event) => {
-          const c = getClickCoords(cameraRef.current, event)
-          console.log('s', { ...c })
           if (!canvasRef.current || !cameraRef.current || !tmpShape) return
 
           // @TODO move to hook if this grows or is gonnabe reused
-          // const c = getClickCoords(cameraRef.current, event)
-          // console.log('s', { ...c })
+          const c = getClickCoords(cameraRef.current, event)
+          console.log('s', { ...c })
 
           openModal({
             title: 'Setup shape details',
