@@ -78,27 +78,36 @@ export default class Shape {
       hasChanged = false
       let prevObj: Mesh | null = null
 
-      shapes.forEach((s) => {
-        const originalCoords = { x: s.x, y: s.y }
+      for (let i = 0; i < shapes.length; i++) {
+        const s = shapes[i]!,
+          originalCoords = { x: s.x, y: s.y }
 
-        if (!prevObj) {
-          if (s.three) {
-            const { width, height } = getMeshSidePoints(s.three)
-            s.y = cardinals.leftCenter.y + height
-            s.x = cardinals.leftCenter.x + width
-          }
-        } else {
-          const { right, halfHeight, halfWidth } = getMeshSidePoints(prevObj),
-            paddedRight = right.x + padding
-          s.y = right.y + halfHeight
-          s.x = paddedRight + halfWidth
-          if (s.three) s.three.position.set(paddedRight, right.y, 0)
+        if (!s.three) {
+          console.warn('Tried running orderShapes without having initialized them properly')
+          hasChanged = false
+          break
         }
 
+        if (!prevObj) {
+          const { width, height } = getMeshSidePoints(s.three)
+          s.y = cardinals.leftCenter.y + width
+          s.x = cardinals.leftCenter.x + height
+        } else {
+          const biggest = shapes[0]!,
+            { right, halfWidth: prevHalfW } = getMeshSidePoints(prevObj),
+            { halfWidth: halfW } = getMeshSidePoints(s.three),
+            paddedRight = right.x + prevHalfW + padding + halfW
+
+          // position Y of each ordered shape based on biggest one's Y
+          s.y = biggest.y
+          s.x = paddedRight
+        }
+
+        s.three.position.set(s.x, s.y, 0)
         prevObj = s.three
 
         if (originalCoords.x !== s.x || originalCoords.y !== s.y) hasChanged = true
-      })
+      }
     }
   }
 }

@@ -2,7 +2,8 @@ import { useMemo } from 'react'
 
 import { Group, Stack } from '@mantine/core'
 import { useForm } from '@mantine/form'
-import { type ShapeNaming } from '@types/common'
+
+import { type ShapeNaming } from 'types/common'
 
 import Circle from 'classes/Circle'
 import Rectangle from 'classes/Rectangle'

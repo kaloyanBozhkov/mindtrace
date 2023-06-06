@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { faCircle, faSquareFull } from '@fortawesome/free-regular-svg-icons'
 import { Stack } from '@mantine/core'
 import { Text } from '@mantine/core'
-import { type ShapeNaming } from '@types/common'
+
+import { type ShapeNaming } from 'types/common'
 
 import ActionButton from 'components/atoms/ActionButton/ActionButton.atom'
 

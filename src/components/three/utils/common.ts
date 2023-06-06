@@ -1,6 +1,6 @@
 import { type MouseEvent } from 'react'
 
-import { type Camera, type Mesh, Vector3 } from 'three'
+import { Box3, type Camera, type Mesh, SphereGeometry, Vector3 } from 'three'
 
 export const deg2rad = (deg: number) => deg * (Math.PI / 180)
 
@@ -68,16 +68,19 @@ export const getCardinalsDirty = () => {
 }
 
 export const getMeshSidePoints = (m: Mesh) => {
-  const position = m.position.clone(),
-    scale = m.scale.clone(),
-    width = scale.x,
-    height = scale.y,
-    halfWidth = width / 2,
-    halfHeight = height / 2,
-    left = new Vector3(-halfWidth, 0, 0).applyQuaternion(m.quaternion).add(position),
-    right = new Vector3(halfWidth, 0, 0).applyQuaternion(m.quaternion).add(position),
-    top = new Vector3(0, halfHeight, 0).applyQuaternion(m.quaternion).add(position),
-    bottom = new Vector3(0, -halfHeight, 0).applyQuaternion(m.quaternion).add(position)
+  const box = new Box3().setFromObject(m)
+
+  const width = box.max.x - box.min.x
+  const height = box.max.y - box.min.y
+  const halfWidth = width / 2
+  const halfHeight = height / 2
+
+  const center = box.getCenter(new Vector3())
+
+  const left = new Vector3(box.min.x, center.y, 0)
+  const right = new Vector3(box.max.x, center.y, 0)
+  const top = new Vector3(center.x, box.max.y, 0)
+  const bottom = new Vector3(center.x, box.min.y, 0)
 
   return {
     left: { x: left.x, y: left.y },

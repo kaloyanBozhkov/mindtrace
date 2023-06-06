@@ -1,5 +1,6 @@
-import { type ShapeNaming } from '@types/common'
 import { create } from 'zustand'
+
+import { type ShapeNaming } from 'types/common'
 
 import type Circle from 'classes/Circle'
 import type Rectangle from 'classes/Rectangle'
